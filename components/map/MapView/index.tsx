@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo } from "react"
-import { MapContainer, ImageOverlay, Marker, Popup, TileLayer, Polygon, Tooltip } from "react-leaflet"
+import { MapContainer, ImageOverlay, Marker, TileLayer, Polygon, Tooltip } from "react-leaflet"
 import L, { type LatLngBoundsExpression } from "leaflet"
 import "leaflet/dist/leaflet.css"
 import { MoveUp } from "lucide-react"

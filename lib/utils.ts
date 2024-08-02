@@ -9,24 +9,26 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const localToGlobal = (option: LocalToGlobal): GlobalCoordinate => {
+  // Destructure properties from the option object for easier access
   const { localX, localY, localTopLeft, localBottomRight, globalTopLeft, globalBottomRight } = option
 
-  // Hitung lebar dan tinggi dalam koordinat lokal
+  // Calculate the width and height in local coordinates
   const localWidth = localBottomRight.x - localTopLeft.x
   const localHeight = localBottomRight.y - localTopLeft.y
 
-  // Hitung lebar dan tinggi dalam koordinat global
+  // Calculate the width and height in global coordinates
   const globalWidth = globalBottomRight.lon - globalTopLeft.lon
   const globalHeight = globalTopLeft.lat - globalBottomRight.lat
 
-  // Hitung skala konversi
+  // Compute the scaling factors for the x and y axes
   const scaleX = globalWidth / localWidth
   const scaleY = globalHeight / localHeight
 
-  // Konversi koordinat lokal ke koordinat global
+  // Convert local coordinates to global coordinates
   const globalLon = globalTopLeft.lon + (localX - localTopLeft.x) * scaleX
   const globalLat = globalTopLeft.lat - (localY - localTopLeft.y) * scaleY
 
+  // Return the converted global coordinates
   return { lat: globalLat, lon: globalLon }
 }
 
